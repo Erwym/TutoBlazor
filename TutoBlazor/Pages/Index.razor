@@ -1,7 +1,12 @@
 ﻿@page "/"
+@using TutoBlazor.Models
+@using TutoBlazor.Services
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Ma boutique</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<ProductList Products="Products" DisplayBuyButton="true"></ProductList>
+
+@code {
+    public List<Product> Products { get; set; } = ProductProviderService.Products.ToList();
+}

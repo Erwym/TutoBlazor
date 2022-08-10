@@ -1,0 +1,27 @@
+@using TutoBlazor.Models
+
+<!--  pour chacun des 3 produits, ce composant va générer du code html quand il est appelé dans Index.razor-->
+
+@foreach (var product in Products)
+{
+    <div class="card w-25">
+        <div class="card-body">
+            <h5 class="card-title">@product.Name</h5>
+            <p class="card-text">@product.Description</p>
+            <blockquote class="card-text">$@product.Price</blockquote>
+            @if (DisplayBuyButton)
+            {
+                <button class="btn btn-primary" type="button">Buy</button>
+            }
+        </div>
+    </div>
+}
+
+<!-- "Point d'entrée" du composant  -->
+@code {
+    [EditorRequired]
+    [Parameter]
+    public List<Product> Products { get; set; } = new();
+    [Parameter]
+    public bool DisplayBuyButton { get; set; }
+}
